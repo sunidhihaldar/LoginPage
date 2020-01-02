@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="container.css">
+<style>
+	p {
+		color:maroon;
+		margin-left:20px;
+	}
+</style>
+</head>
+<body>
+	<h1>Registration Form</h1>
+	<form method="post" action="request">
+		<div class="container">
+			<table>
+				<tr>
+					<td>First Name:</td>
+					<td><input type="text" name="fname" placeholder="Enter first name"
+						required></td>
+				</tr>
+				<tr>
+					<td>Second Name:</td>
+					<td><input type="text" name="sname" placeholder="Enter second name"
+						required></td>
+				</tr>
+				<tr>
+					<td>Date Of Birth:</td>
+					<td><input type="date" name="dob"></td>
+				</tr>
+				<tr>
+					<td>Gender:</td>
+					<td><input type="radio" name="gender" value="male">Male
+					<input type="radio" name="gender" value="female">Female
+					<input type="radio" name="gender" value="other">Other</td>
+				</tr>
+				<tr>
+					<td>Email Id:</td>
+					<td><input type="email" name="email"
+						placeholder="Enter email id" required></td>
+				</tr>
+				<tr>
+					<td>Contact Number:</td>
+					<td><input type="text" name="contact"
+						placeholder="Enter contact number" required></td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td><input type="text" name="address"
+						placeholder="Enter address"></td>
+				</tr>
+				<tr>
+					<td>Country:</td>
+					<td><input type="text" name="country"
+						placeholder="Enter your nationality"></td>
+				</tr>
+				<tr>
+					<td>User Name:</td>
+					<td><input type="text" name="username" placeholder="Enter username"
+						required></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="pwd"
+						placeholder="Enter password" pattern=".{8,}"
+						title="Must contain atleast 8 characters" required></td>
+				</tr>
+				<tr>
+					<td>Confirm Password:</td>
+					<td><input type="password" name="cpwd"
+						placeholder="Confirm password" pattern=".{8,}" 
+						title="Must contain atleast 8 characters" required></td>
+				</tr>
+			</table>
+			<p>By creating an account you agree to our Terms and Conditions.</p>
+			<input type="submit" value="Submit">
+		</div>
+	</form>
+</body>
+</html>

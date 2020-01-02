@@ -1,0 +1,25 @@
+<web-app>
+	
+	<servlet>
+		<servlet-name>DisplayServlet</servlet-name>
+		<servlet-class>Login.Servlet.DisplayServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayServlet</servlet-name>
+		<url-pattern>/DisplayServ</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LoginServ</servlet-name>
+		<servlet-class>Login.Servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServ</servlet-name>
+		<url-pattern>/request</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>registration.html</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

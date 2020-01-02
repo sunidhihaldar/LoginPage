@@ -1,0 +1,12 @@
+@charset "UTF-8";
+.container{
+	padding:16px;
+}
+div {
+  	background-color: lightblue;
+  	width: 800px;
+  	border: 15px solid maroon;
+  	padding: 500px;
+  	margin: 20px;
+
+}
