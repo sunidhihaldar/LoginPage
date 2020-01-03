@@ -19,7 +19,17 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>registration.html</welcome-file>
+		<welcome-file>login.html</welcome-file>
 	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>registrationSevlet</servlet-name>
+		<servlet-class>Login.Servlet.RegistrationServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>registrationSevlet</servlet-name>
+		<url-pattern>/registration</url-pattern>
+	</servlet-mapping>
 	
 </web-app>
