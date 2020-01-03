@@ -2,13 +2,11 @@ package Login.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import Login.Model.User;
 import Login.Service.IUserService;
 import Login.ServiceImplementation.UserAddition;
@@ -21,6 +19,7 @@ public class RegistrationServlet extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter pw = resp.getWriter();
 		IUserService service = new UserAddition();
+		User newUser = new User();
 
 		String fetchedFname = req.getParameter("fname");
 		String fetchedSname = req.getParameter("sname");
@@ -32,8 +31,8 @@ public class RegistrationServlet extends HttpServlet {
 		String fetchedCountry = req.getParameter("country");
 		String fetchedUname = req.getParameter("username");
 		String fetchedPwd = req.getParameter("password");
-
-		User newUser = new User();
+		//check point System.out.println(fetchedAddress);
+		
 		newUser.setFirstName(fetchedFname);
 		newUser.setLastName(fetchedSname);
 		newUser.setDob(fetchedDOB);
@@ -44,6 +43,7 @@ public class RegistrationServlet extends HttpServlet {
 		newUser.setCountry(fetchedCountry);
 		newUser.setUsername(fetchedUname);
 		newUser.setPassword(fetchedPwd);
+		//check point System.out.println("sending data to database validation");
 
 		if (service.insertUser(newUser) >= 1) {
 			pw.println("User registred successfully");

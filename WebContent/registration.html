@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>Registration Form</h1>
-	<form method="post" action="request">
+	<form method="get" action="registration">
 		<div class="container">
 			<table>
 				<tr>
@@ -64,14 +64,8 @@
 				<tr>
 					<td>Password:</td>
 					<td><input type="password" name="password"
-						placeholder="Enter password" pattern=".{8,}"
-						title="Must contain atleast 8 characters" required></td>
-				</tr>
-				<tr>
-					<td>Confirm Password:</td>
-					<td><input type="password" name="cpwd"
-						placeholder="Confirm password" pattern=".{8,}" 
-						title="Must contain atleast 8 characters" required></td>
+						placeholder="Enter password" pattern=".{6,}"
+						title="Must contain atleast 6 characters" required></td>
 				</tr>
 			</table>
 			<p>By creating an account you agree to our Terms and Conditions.</p>

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Login.DBConnection;
+import Login.Database.DBConnection;
 import Login.Model.User;
 import Login.Service.IUserService;
 
@@ -17,23 +17,22 @@ public class UserAddition implements IUserService {
 	@Override
 	public int insertUser(User user) {
 		int insertedNumber = 0;
-		User fetchedUser = new User();
-		String insertQuery = "insert into logind values (?,?,?,?,?,?,?,?,?,?)";
-
+		String insertQuery = "insert into logind (fname,sname,dob,gender,email,contact,address,country,username,password) values (?,?,?,?,?,?,?,?,?,?)";
+		System.out.println("fetched name inside user addition" + user.getFirstName());
 		try {
 			connection = DBConnection.getConnection();
 			PreparedStatement pst = connection.prepareStatement(insertQuery);
-			pst.setString(1, fetchedUser.getFirstName());
-			pst.setString(2, fetchedUser.getLastName());
-			pst.setString(3, fetchedUser.getDob());
-			pst.setString(4, fetchedUser.getGender());
-			pst.setString(5, fetchedUser.getEmail());
-			pst.setString(6, fetchedUser.getMobilenumber());
-			pst.setString(7, fetchedUser.getAddress());
-			pst.setString(8, fetchedUser.getCountry());
-			pst.setString(9, fetchedUser.getUsername());
-			pst.setString(10, fetchedUser.getPassword());
-
+			pst.setString(1, user.getFirstName());
+			pst.setString(2, user.getLastName());
+			pst.setString(3, user.getDob());
+			pst.setString(4, user.getGender());
+			pst.setString(5, user.getEmail());
+			pst.setString(6, user.getMobilenumber());
+			pst.setString(7, user.getAddress());
+			pst.setString(8, user.getCountry());
+			pst.setString(9, user.getUsername());
+			pst.setString(10, user.getPassword());
+			
 			insertedNumber = pst.executeUpdate();
 
 		} catch (SQLException e) {
@@ -48,7 +47,7 @@ public class UserAddition implements IUserService {
 		User user = null;
 		try {
 			connection = DBConnection.getConnection();
-			String selectQuery = "Select * from logind where username = ? and password = ?";
+			String selectQuery = "select * from logind where username = ? and password = ?";
 			PreparedStatement pst = connection.prepareStatement(selectQuery);
 			pst.setString(1, username);
 			pst.setString(2, password);
