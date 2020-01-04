@@ -2,11 +2,13 @@ package Login.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Login.Model.User;
 import Login.Service.IUserService;
@@ -28,6 +30,8 @@ public class LoginServlet extends HttpServlet {
 	    
 	    if(fetchedUser != null) {
 	    	pw.println("Login successful");
+	    	HttpSession session = req.getSession();
+	    	session.setAttribute("uname", inputUsername);
 	    	RequestDispatcher rd = req.getRequestDispatcher("DisplayServ");
 			rd.forward(req, resp);
 	    }

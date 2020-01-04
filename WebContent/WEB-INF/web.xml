@@ -27,6 +27,15 @@
 		<url-pattern>/registration</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>logoutServ</servlet-name>
+		<servlet-class>Login.Servlet.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>logoutServ</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>login.html</welcome-file>
 	</welcome-file-list>

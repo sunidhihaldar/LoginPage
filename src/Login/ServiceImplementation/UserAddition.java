@@ -18,7 +18,8 @@ public class UserAddition implements IUserService {
 	public int insertUser(User user) {
 		int insertedNumber = 0;
 		String insertQuery = "insert into logind (fname,sname,dob,gender,email,contact,address,country,username,password) values (?,?,?,?,?,?,?,?,?,?)";
-		System.out.println("fetched name inside user addition" + user.getFirstName());
+		//check point System.out.println("fetched name inside user addition" + user.getFirstName());
+		
 		try {
 			connection = DBConnection.getConnection();
 			PreparedStatement pst = connection.prepareStatement(insertQuery);
