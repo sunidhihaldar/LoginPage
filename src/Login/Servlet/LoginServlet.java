@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 	    if(fetchedUser != null) {
 	    	pw.println("Login successful");
 	    	HttpSession session = req.getSession();
-	    	session.setAttribute("uname", inputUsername);
+	    	session.setAttribute("username", inputUsername);
 	    	RequestDispatcher rd = req.getRequestDispatcher("DisplayServ");
 			rd.forward(req, resp);
 	    }

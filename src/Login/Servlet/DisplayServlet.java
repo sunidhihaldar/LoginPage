@@ -18,7 +18,7 @@ public class DisplayServlet extends HttpServlet {
 		resp.setContentType("text/html");
 		HttpSession session = req.getSession(false);
 		if(session != null) {
-			String username = (String) session.getAttribute("uname");
+			String username = (String) session.getAttribute("username");
 			pw.println("Welcome " + username);
 			//resp.sendRedirect("logout.jsp");
 			RequestDispatcher rd = req.getRequestDispatcher("logout.jsp");
