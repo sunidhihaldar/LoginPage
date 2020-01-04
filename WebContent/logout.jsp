@@ -7,8 +7,11 @@
 <title>LogoutPage</title>
 </head>
 <body>
+	<%
+		String name = request.getParameter("username");
+		out.print("<br><br><br>Do you want to logout " + name + " ?");
+	%>
 	<form action="logout" method="get">
-		<br>
 		<input type="submit" value="Logout">
 	</form>
 </body>
