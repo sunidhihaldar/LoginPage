@@ -3,6 +3,13 @@ package Login.Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * This class provides database connection of the type singleton design pattern
+ * @author Sunidhi Haldar
+ * @created 2019-12-27
+ * @version 1.8
+ */
+
 public class DBConnection {
 
 	public static Connection connection = null;
@@ -20,5 +27,4 @@ public class DBConnection {
 	public static Connection getConnection() {
 		return connection;
 	}
-
 }

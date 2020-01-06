@@ -10,11 +10,12 @@ import Login.Model.User;
 import Login.Service.IUserService;
 
 /**
- * This class provides the functionalities of inserting user data into the database and fetching the data of the user
- * from the database
+ * This class provides the functionalities of inserting user data into the
+ * database and fetching the data of the user from the database
+ * 
  * @author Sunidhi Haldar
  * @created 2020-01-03
- * @version 1.9
+ * @version 1.8
  */
 
 public class UserAddition implements IUserService {
@@ -22,16 +23,18 @@ public class UserAddition implements IUserService {
 	private static Connection connection;
 
 	/**
-	 * This method takes Class object user as input parameter and inserts user data into the database for a particular
-	 * user and after insertion of data, returns the number of rows affected
+	 * This method takes Class object user as input parameter and inserts user data
+	 * into the database for a particular user and after insertion of data, returns
+	 * the number of rows affected
 	 */
-	
+
 	@Override
 	public int insertUser(User user) {
 		int insertedNumber = 0;
 		String insertQuery = "insert into logind (fname,sname,dob,gender,email,contact,address,country,username,password) values (?,?,?,?,?,?,?,?,?,?)";
-		//check point System.out.println("fetched name inside user addition" + user.getFirstName());
-		
+		// check point System.out.println("fetched name inside user addition" +
+		// user.getFirstName());
+
 		try {
 			connection = DBConnection.getConnection();
 			PreparedStatement pst = connection.prepareStatement(insertQuery);
@@ -45,7 +48,7 @@ public class UserAddition implements IUserService {
 			pst.setString(8, user.getCountry());
 			pst.setString(9, user.getUsername());
 			pst.setString(10, user.getPassword());
-			
+
 			insertedNumber = pst.executeUpdate();
 
 		} catch (SQLException e) {
@@ -56,12 +59,13 @@ public class UserAddition implements IUserService {
 	}
 
 	/**
-	 * 
+	 * This class takes username and password of the user as input parameters and
+	 * checks if it matches with the existing records in the database and finally
+	 * returns the result set
 	 */
-	
+
 	@Override
 	public ResultSet getUser(String username, String password) {
-		//User user = null;
 		ResultSet rs = null;
 		try {
 			connection = DBConnection.getConnection();

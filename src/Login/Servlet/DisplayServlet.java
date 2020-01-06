@@ -10,6 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * This servlet displays the welcome page to user and redirects the user to logout page
+ * @author Sunidhi Haldar
+ * @created 2019-12-27
+ * @version 1.8
+ */
+
 @SuppressWarnings("serial")
 public class DisplayServlet extends HttpServlet {
 

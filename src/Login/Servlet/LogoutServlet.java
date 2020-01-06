@@ -8,6 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * This servlet allows the user to logout and user is redirected to the login page
+ * @author Sunidhi Haldar
+ * @created 2020-01-04
+ * @version 1.8
+ */
+
 @SuppressWarnings("serial")
 public class LogoutServlet extends HttpServlet {
 	
