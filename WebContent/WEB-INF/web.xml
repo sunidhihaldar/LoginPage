@@ -19,11 +19,11 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>registrationSevlet</servlet-name>
+		<servlet-name>registrationServlet</servlet-name>
 		<servlet-class>Login.Servlet.RegistrationServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>registrationSevlet</servlet-name>
+		<servlet-name>registrationServlet</servlet-name>
 		<url-pattern>/registration</url-pattern>
 	</servlet-mapping>
 	

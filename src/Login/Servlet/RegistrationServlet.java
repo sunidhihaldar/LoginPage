@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Login.Model.User;
 import Login.Service.IUserService;
+import Login.Service.IValidate;
 import Login.ServiceImplementation.UserAddition;
+import Login.ServiceImplementation.Validation;
 
 @SuppressWarnings("serial")
 public class RegistrationServlet extends HttpServlet {
@@ -17,8 +19,10 @@ public class RegistrationServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
+		System.out.println("Iside registration");
 		PrintWriter pw = resp.getWriter();
 		IUserService service = new UserAddition();
+		IValidate validate = new Validation();
 		User newUser = new User();
 
 		String fetchedFname = req.getParameter("fname");
@@ -31,7 +35,15 @@ public class RegistrationServlet extends HttpServlet {
 		String fetchedCountry = req.getParameter("country");
 		String fetchedUname = req.getParameter("username");
 		String fetchedPwd = req.getParameter("password");
-		//check point System.out.println(fetchedAddress);
+		System.out.println(fetchedAddress);
+		
+		if(validate.isValidatingUsername(fetchedUname)) {
+			String validatedUsername = fetchedUname;
+			newUser.setUsername(validatedUsername);
+		}
+		else {
+			pw.println("<span style = 'color: red'><br>Username already registered</span>");
+		}
 		
 		newUser.setFirstName(fetchedFname);
 		newUser.setLastName(fetchedSname);
@@ -41,11 +53,12 @@ public class RegistrationServlet extends HttpServlet {
 		newUser.setMobilenumber(fetchedContact);
 		newUser.setAddress(fetchedAddress);
 		newUser.setCountry(fetchedCountry);
-		newUser.setUsername(fetchedUname);
+		//newUser.setUsername(fetchedUname);
 		newUser.setPassword(fetchedPwd);
-		//check point System.out.println("sending data to database validation");
+		System.out.println("sending data to database validation");
 
-		if (service.insertUser(newUser) >= 1) {
+		if ((newUser.getUsername() != null) && (service.insertUser(newUser) >= 1)) {
+			System.out.println(newUser.getUsername());
 			pw.println("User registred successfully");
 			RequestDispatcher dispatcher = req.getRequestDispatcher("login.html");
 			dispatcher.include(req, resp);

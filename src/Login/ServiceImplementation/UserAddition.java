@@ -9,11 +9,23 @@ import Login.Database.DBConnection;
 import Login.Model.User;
 import Login.Service.IUserService;
 
+/**
+ * This class provides the functionalities of inserting user data into the database and fetching the data of the user
+ * from the database
+ * @author Sunidhi Haldar
+ * @created 2020-01-03
+ * @version 1.9
+ */
+
 public class UserAddition implements IUserService {
 
 	private static Connection connection;
 
-	@SuppressWarnings("unused")
+	/**
+	 * This method takes Class object user as input parameter and inserts user data into the database for a particular
+	 * user and after insertion of data, returns the number of rows affected
+	 */
+	
 	@Override
 	public int insertUser(User user) {
 		int insertedNumber = 0;
@@ -43,36 +55,41 @@ public class UserAddition implements IUserService {
 		return insertedNumber;
 	}
 
+	/**
+	 * 
+	 */
+	
 	@Override
-	public User getUser(String username, String password) {
-		User user = null;
+	public ResultSet getUser(String username, String password) {
+		//User user = null;
+		ResultSet rs = null;
 		try {
 			connection = DBConnection.getConnection();
 			String selectQuery = "select * from logind where username = ? and password = ?";
 			PreparedStatement pst = connection.prepareStatement(selectQuery);
 			pst.setString(1, username);
 			pst.setString(2, password);
-
-			ResultSet resultSet = pst.executeQuery();
-			if (resultSet.first()) {
-				user = new User();
-				while (resultSet.next()) {
-					user.setFirstName(resultSet.getString(1));
-					user.setLastName(resultSet.getString(2));
-					user.setEmail(resultSet.getString(3));
-					user.setDob(resultSet.getString(4));
-					user.setMobilenumber(resultSet.getString(5));
-					user.setGender(resultSet.getString(6));
-					user.setAddress(resultSet.getString(7));
-					user.setCountry(resultSet.getString(8));
-					user.setUsername(resultSet.getString(9));
-					user.setPassword(resultSet.getString(10));
-				}
-			}
+			rs = pst.executeQuery();
+//			ResultSet resultSet = pst.executeQuery();
+//			if (resultSet.first()) {
+//				user = new User();
+//				while (resultSet.next()) {
+//					user.setFirstName(resultSet.getString(1));
+//					user.setLastName(resultSet.getString(2));
+//					user.setEmail(resultSet.getString(3));
+//					user.setDob(resultSet.getString(4));
+//					user.setMobilenumber(resultSet.getString(5));
+//					user.setGender(resultSet.getString(6));
+//					user.setAddress(resultSet.getString(7));
+//					user.setCountry(resultSet.getString(8));
+//					user.setUsername(resultSet.getString(9));
+//					user.setPassword(resultSet.getString(10));
+//				}
+//			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error fetching data " + e.getMessage());
 		}
-		return user;
+		return rs;
 	}
 
 }

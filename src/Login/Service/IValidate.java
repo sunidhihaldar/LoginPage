@@ -4,7 +4,7 @@ package Login.Service;
  * This functional interface provides an unimplemented method of validating username
  * @author Sunidhi Haldar
  * @created 2020-01-04
- * @version 1.8
+ * @version 1.8s
  */
 
 @FunctionalInterface
@@ -15,6 +15,6 @@ public interface IValidate {
 	 * @param username as String input parameter
 	 * @return boolean value
 	 */
-	public boolean isValidatingUsername(String username);
+	public boolean isValidatingUsername(String inputUsername);
 	
 }
